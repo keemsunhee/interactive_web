@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      click했을 때 삭제 코드 고쳐보기-이벤트위임, classList.contains
+    </title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/index4_1_fix.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="ilbuni a"></div>
+      <div class="ilbuni b"></div>
+      <div class="ilbuni c"></div>
+    </div>
+    <script>
+      (function () {
+        //이벤트 위임
+        const stage = document.querySelector(".stage");
+
+        function clickEventListener(e) {
+          if (e.target.classList.contains("ilbuni")) {
+            stage.removeChild(e.target);
+          }
+        }
+
+        stage.addEventListener("click", clickEventListener);
+      })();
+    </script>
+  </body>
+</html>

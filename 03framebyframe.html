@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background: #333;
+      }
+
+      .spaceship {
+        width: 150px;
+        height: 150px;
+        background: url(./images/sprite_spaceship.png) no-repeat 0 0 / auto
+          150px;
+        /* background-size: cover; */
+        animation: spaceship-ani 2s infinite steps(17);
+        /* steps(원하는단계수) */
+        /* animation-duration: 2s;
+           animation-timing-function: steps(17);
+           animation-delay: 0s;
+           animation-iteration-count: infinite;
+           animation-direction: normal;
+           animation-fill-mode: none;
+           animation-play-state: running;
+           animation-name: spaceship-ani; */
+      }
+
+      @keyframes spaceship-ani {
+        from {
+          background-position: -2550px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>frame by frame</h1>
+    <div class="spaceship"></div>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>scroll Event</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      img {
+        max-width: 100%;
+      }
+
+      .output {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 30px;
+        background-color: rgba(255, 136, 0, 0.288);
+        color: #fff;
+        font-size: 1rem;
+      }
+
+      .content {
+        height: 1000vh;
+        padding: 20%;
+        background: yellowgreen;
+      }
+
+      p {
+        margin: 20px auto;
+      }
+
+      .ilbuni {
+        width: 100px;
+        margin: 20px auto;
+        transition: 1s;
+      }
+
+      .ilbuni.zoom {
+        transform: scale(2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="output">output</div>
+    <div class="content">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae,
+        voluptatem corporis illum fugiat perferendis animi, quis officiis
+        temporibus quos ea quae harum numquam voluptas voluptate deserunt fuga
+        eos? Aliquid, culpa.
+      </p>
+      <figure class="ilbuni">
+        <img src="images/ilbuni_0.png" />
+      </figure>
+    </div>
+    <script>
+      (function () {
+        const outputElem = document.querySelector(".output");
+        const ilbuniElem = document.querySelector(".ilbuni");
+
+        function showValue() {
+          // outputElem.innerHTML = window.pageYOffset;  스크롤위치
+          // outputElem.innerHTML = ilbuniElem.offsetTop;  처음의 스크롤 위치만 가져옴
+          let posY = ilbuniElem.getBoundingClientRect().top;
+          outputElem.innerHTML = posY;
+
+          //브라우저의 1/5 위치에 왔을 때 .zoom
+
+          if (posY < window.innerHeight / 5) {
+            ilbuniElem.classList.add("zoom");
+          } else {
+            ilbuniElem.classList.remove("zoom");
+          }
+        }
+
+        window.addEventListener("scroll", function () {
+          showValue();
+        });
+
+        showValue();
+      })();
+    </script>
+  </body>
+</html>

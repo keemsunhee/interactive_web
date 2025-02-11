@@ -1,0 +1,269 @@
+body {
+  -webkit-overflow-scrolling: touch;
+  color: #555;
+  background: rgba(187, 255, 0, 0.384);
+  height: 500vw;
+}
+
+.world {
+  perspective: 1000px;
+  position: fixed; /*스크롤을 움직임에 따라 동작하는것이지만 보이는 화면 자체는 앞뒤(원근감)으로 움직이기 때문에 fixed 해놓기*/
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d; /*자식 속성의 기준을 잡아주기*/
+}
+
+.house {
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;
+  position: relative;
+  transform: translateZ(-490vw);
+}
+
+.wall {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.wall-title {
+  font-size: 3rem;
+}
+
+.wall-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.wall-left {
+  width: 1000vw;
+  /* left: -500vw; 
+  transform: rotateY(90deg); */
+  transform: rotateY(90deg) translateZ(-500vw);
+  background-color: rgba(255, 136, 154, 0.247);
+}
+
+.wall-right {
+  width: 1000vw;
+  /* left: -500vw; 
+  transform: rotateY(90deg) translateZ(100vw);*/
+  transform: rotateY(90deg) translateZ(-400vw);
+  background-color: rgba(255, 136, 154, 0.247);
+}
+
+.wall-front-a {
+  transform: translateZ(300vw);
+}
+.wall-front-b {
+  transform: translateZ(50vw);
+}
+.wall-front-c {
+  transform: translateZ(-200vw);
+}
+.wall-front-d {
+  transform: translateZ(-500vw);
+}
+
+.progress-bar-con {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 5px;
+  background-color: #555;
+  z-index: 100;
+}
+
+.progress-bar {
+  width: 30%;
+  height: 100%;
+  background-color: skyblue;
+}
+
+/* character */
+.character-wrap {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 150px;
+  height: 240px;
+  border: 1px solid #f80;
+}
+
+.character-head,
+.character-body,
+.character-arm-left,
+.character-arm-right,
+.character-leg-left,
+.character-leg-right {
+  transform-style: preserve-3d;
+}
+
+/* head */
+.character-head {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  border: 1px solid #f80;
+}
+.character-head .front {
+  z-index: 1;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100px;
+  background: url(../images/ilbuni_head_front.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.character-head .back {
+  position: absolute;
+  left: 10%;
+  top: 0%;
+  width: 100%;
+  height: 100px;
+  background: url(../images/ilbuni_head_back.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* transform: rotateY(180deg); */
+  /* backface-visibility: hidden; */
+}
+
+/* body */
+.character-body {
+  position: absolute;
+  left: 27%;
+  top: 40%;
+  height: 50px;
+  width: 50%;
+  border: 1px solid #f80;
+}
+.character-body .front {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background: url(../images/ilbuni_body_front.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.character-body .back {
+  position: absolute;
+  left: 10%;
+  width: 100%;
+  height: 50px;
+  background: url(../images/ilbuni_body_back.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* arm */
+.character-arm-left {
+  position: absolute;
+  left: 0;
+  top: 40%;
+  height: 42px;
+  width: 25%;
+  border: 1px solid #f80;
+}
+
+.character-arm-right {
+  position: absolute;
+  right: 0;
+  top: 40%;
+  height: 42px;
+  width: 25%;
+  border: 1px solid #f80;
+}
+
+.character-arm-left .front,
+.character-arm-right .front,
+.character-leg-left .front,
+.character-leg-right .front {
+  z-index: 1;
+}
+
+.character-arm-left .front,
+.character-arm-left .back,
+.character-arm-right .front,
+.character-arm-right .back {
+  position: absolute;
+}
+
+.character-arm-left .front,
+.character-arm-right .back {
+  width: 100%;
+  height: 50px;
+  background: url(../images/ilbuni_arm_0.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.character-arm-left .back,
+.character-arm-right .front {
+  width: 100%;
+  height: 50px;
+  background: url(../images/ilbuni_arm_1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* leg */
+.character-leg-left {
+  position: absolute;
+  left: 22%;
+  top: 61%;
+  width: 27%;
+  border: 1px solid #f80;
+}
+
+.character-leg-right {
+  position: absolute;
+  right: 22%;
+  top: 61%;
+  width: 27%;
+  border: 1px solid #f80;
+}
+
+.character-leg-left .front,
+.character-leg-left .back,
+.character-leg-right .front,
+.character-leg-right .back {
+  position: absolute;
+}
+
+.character-leg-left .front,
+.character-leg-right .back {
+  width: 100%;
+  height: 50px;
+  background: url(../images/ilbuni_leg_0.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.character-leg-left .back,
+.character-leg-right .front {
+  width: 100%;
+  height: 50px;
+  background: url(../images/ilbuni_leg_1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}

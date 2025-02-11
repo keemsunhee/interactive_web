@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        width: 100px;
+        height: 100px;
+        background-color: #ff0;
+        border: 2px solid #000;
+        animation: sample-ani 2s linear forwards;
+        /* animation-duration: 2s;
+           animation-timing-function: linear; (가속도)
+           animation-delay: 0s; (지연시간)
+           animation-iteration-count: 1;(반복횟수)
+           animation-direction: normal;
+           animation-direction: alternate; (번갈아서) => 0 - 100 이동한 반대방향으로 재생
+           animation-direction: reverse; (출발시점을 반대로) 
+           animation-fill-mode: none;
+           animation-fill-mode: fowards; (마지막시점에 멈춰있음)
+           animation-play-state: running; (자동으로 재생)
+           animation-play-state: paused; (일시정지)
+           animation-name: sample-ani; 
+       */
+      }
+
+      .box2 {
+        width: 30px;
+        height: 100px;
+        background: #f89;
+        animation: sample-ani2 2s ease 2;
+      }
+
+      .box2:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes sample-ani {
+        0% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(300px, 0);
+        }
+        70% {
+          transform: translate(400px, 0);
+        }
+        100% {
+          transform: translate(500px, 300px);
+        }
+      }
+
+      @keyframes sample-ani2 {
+        0% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(400px, 300px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Animation</h1>
+    <div class="box">BOX</div>
+    <div class="box2">BOX</div>
+  </body>
+</html>

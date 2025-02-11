@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Object-반복되는객체 정리하기</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      //생성자 함수 (constructor) -> 관례적으로 함수명을 대문자로 씀
+      function Person(nickname, age) {
+        this.nickname = nickname;
+        this.age = age;
+        // this.introduce = function () {
+        //   console.log(
+        //     "안녕하세요? 저는 " +
+        //       this.nickname +
+        //       "이고, 나이는 " +
+        //       this.age +
+        //       "살입니다."
+        //   );
+        // };
+      }
+
+      //반복되는건 prototype으로 따로 빼준다
+      Person.prototype.introduce = function () {
+        console.log(
+          "안녕하세요? 저는 " +
+            this.nickname +
+            "이고, 나이는 " +
+            this.age +
+            "살입니다."
+        );
+      };
+
+      //인스턴스 (instance)
+      const person1 = new Person("일분이", 10);
+      const person2 = new Person("이분이", 8);
+    </script>
+  </body>
+</html>

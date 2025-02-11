@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>setTimeout, clearTimeout</title>
+    <style>
+      .btn {
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">취소</button>
+
+    <script>
+      let timeId;
+      const btn = document.querySelector(".btn");
+      function sample() {
+        console.log("setTimeout!");
+      }
+      timeId = setTimeout(sample, 3000); // return 하는 값이 숫자로 있는데 반복하면 1씩 늘어남
+
+      btn.addEventListener("click", function (e) {
+        clearTimeout(timeId); //실행 취소
+      });
+    </script>
+  </body>
+</html>

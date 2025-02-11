@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>click했을 때 삭제, for문, removeChild, parentNode</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/index4_1.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="ilbuni a"></div>
+      <div class="ilbuni b"></div>
+      <div class="ilbuni c"></div>
+    </div>
+    <script>
+      (function () {
+        const ilbuniGroup = document.querySelectorAll(".ilbuni");
+        const stage = document.querySelector(".stage");
+
+        function clickEventListener(e) {
+          // this.parentNode.removeChild(this);
+          stage.removeChild(e.currentTarget);
+        }
+
+        for (let i = 0; i < ilbuniGroup.length; i++) {
+          ilbuniGroup[i].addEventListener("click", clickEventListener);
+        }
+      })();
+    </script>
+  </body>
+</html>

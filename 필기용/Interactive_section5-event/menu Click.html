@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>parentNode</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      .menu {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vw;
+        background: antiquewhite;
+      }
+
+      .menu-btn {
+        height: 50vw;
+        margin-right: 10px;
+        border: 2px solid #999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <button class="menu-btn a" data-value="1">
+        <img src="images/ilbuni_0.png" />
+        <span>일분이1</span>
+      </button>
+      <button class="menu-btn b" data-value="2">
+        <img src="images/ilbuni_1.png" />
+        <span>일분이2</span>
+      </button>
+      <button class="menu-btn c" data-value="3">
+        <img src="images/ilbuni_2.png" />
+        <span>일분이3</span>
+      </button>
+    </div>
+
+    <script>
+      const menu = document.querySelector(".menu");
+      // getAttribute("data-value")
+      // dataset.value;
+
+      function clickHandler(e) {
+        let elem = e.target;
+        while (!elem.classList.contains("menu-btn")) {
+          elem = elem.parentNode;
+
+          if (elem.nodeName == "BODY") {
+            elem = null;
+            return;
+          }
+          console.log(elem.dataset.value);
+        }
+      }
+      menu.addEventListener("click", clickHandler);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      .stage {
+        width: 100vw;
+        height: 100vh;
+        background-color: #777;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* perspective: 800px; */
+      }
+      .door {
+        width: 100px;
+        height: 150px;
+        /* outline: 2px dashed yellow; */
+        position: relative;
+      }
+      .door-back {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: #000;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .ilbuni {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100px;
+        height: 100px;
+        background-repeat: no-repeat;
+        background-position: 50% 100%;
+        /*background-position: center bottom */
+        background-size: contain;
+        /* transform: translateX(); */
+        transform: translate3d(100%, 0, 0);
+        transition: 0.5s 0.5s; /* transition: duration delay*/
+      }
+
+      .door:nth-child(1) .ilbuni {
+        background-image: url(./images/ilbuni_0.png);
+      }
+      .door:nth-child(2) .ilbuni {
+        background-image: url(./images/ilbuni_1.png);
+      }
+      .door:nth-child(3) .ilbuni {
+        background-image: url(./images/ilbuni_2.png);
+      }
+
+      .door-body {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transition: 0.5s;
+      }
+
+      .door:nth-child(1) .door-body {
+        background-color: rgba(229, 255, 0, 0.712);
+      }
+      .door:nth-child(2) .door-body {
+        background-color: rgba(255, 0, 191, 0.356);
+      }
+      .door:nth-child(3) .door-body {
+        background-color: rgba(0, 225, 255, 0.384);
+      }
+
+      .on .door-body {
+        transform: perspective(800px) rotateY(-110deg);
+        transform-origin: 0%; /* transform-origin: left;*/
+        /* perspective(원근감)를 부모에 넣을지 자식요소자체에 넣을지 디자인따라 판단하기 */
+      }
+
+      .on .ilbuni {
+        transform: translate3d(0, 0, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <div class="door">
+        <div class="door-back">
+          <div class="ilbuni"></div>
+        </div>
+        <div class="door-body"></div>
+      </div>
+      <div class="door">
+        <div class="door-back">
+          <div class="ilbuni"></div>
+        </div>
+        <div class="door-body"></div>
+      </div>
+      <div class="door">
+        <div class="door-back">
+          <div class="ilbuni"></div>
+        </div>
+        <div class="door-body"></div>
+      </div>
+    </div>
+    <script>
+      const stageElem = document.querySelector(".stage");
+
+      ///*****현재 활성화된 아이템을 저장*****
+      let currentItem;
+
+      function doorHandler(e) {
+        const targetElem = e.target;
+
+        // const currentItem = document.querySelector(".on");
+        if (currentItem) {
+          currentItem.classList.remove("on");
+        }
+
+        // console.log(targetElem.parentNode.classList.add("on"));
+        //stage에 클릭이기 때문에 바깥 영역까지 실행됨
+        if (targetElem.classList.contains("door-body")) {
+          targetElem.parentNode.classList.add("on");
+          currentItem = targetElem.parentNode;
+        }
+      }
+
+      stageElem.addEventListener("click", doorHandler);
+    </script>
+  </body>
+</html>

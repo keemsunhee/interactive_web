@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>전역변수</title>
+    <link rel="stylesheet" href="css/reset.css" />
+
+    <!-- <script>
+      // window.addEventListener("load", function () {
+      window.addEventListener("DOMContentLoaded", function () {
+        const ilbuni = document.querySelector(".ilbuni:nth-child(3)");
+        ilbuni.addEventListener("click", function () {
+          ilbuni.classList.toggle("special");
+        });
+      });
+    </script> -->
+
+    <style>
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      .characters {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: #fff000;
+      }
+      .ilbuni {
+        width: 100px;
+        cursor: pointer;
+      }
+      .characters .ilbuni {
+        display: inline-block;
+      }
+      .special {
+        border: 10px dashed red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="characters">
+      <div class="ilbuni a">
+        <img src="images/ilbuni_0.png" alt="일분이" />
+      </div>
+      <div class="ilbuni b">
+        <img src="images/ilbuni_1.png" alt="일분이" />
+      </div>
+      <div class="ilbuni c">
+        <img src="images/ilbuni_2.png" alt="일분이" />
+      </div>
+    </div>
+    <div class="ilbuni d">
+      <img src="images/ilbuni_3.png" alt="일분이" />
+    </div>
+
+    <script>
+      //전역변수(모든애들이 접근할 수 있는 변수)
+      // const ilbuni = document.querySelector(".ilbuni:nth-child(3)");
+      // const clickIlbuniHandler = function () {
+      //   ilbuni.classList.toggle("special");
+      // };
+
+      // // const clickIlbuniHandler = () => {
+      // //   ilbuni.classList.toggle("special");
+      // // };
+
+      // // function clickIlbuniHandler() {
+      // //   ilbuni.classList.toggle("special");
+      // // }
+
+      // ilbuni.addEventListener("click", clickIlbuniHandler);
+
+      //전역변수로 인한 에러를 줄이기 위해 function에 감싸줌
+      (function ilbun() {
+        const ilbuni = document.querySelector(".ilbuni:nth-child(3)");
+
+        function clickIlbuniHandler() {
+          ilbuni.classList.toggle("special");
+        }
+        ilbuni.addEventListener("click", clickIlbuniHandler);
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      Transition Event - clientX, clientY, transitionend, transitionstart,
+      elapsedTime, propertyName
+    </title>
+    <style>
+      .ball {
+        position: absolute;
+        left: 0;
+        top: 0;
+        /* 디폴트 여백 제거 */
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #f80;
+        transition: 1s;
+        /* margin: -15px 0 0 -15px; */
+        /* 클릭한 위치가 센터로 잡힐 수 있도록 조절 */
+      }
+
+      .ball.end {
+        background: dodgerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball"></div>
+
+    <script>
+      const ballElem = document.querySelector(".ball");
+
+      window.addEventListener("click", function (e) {
+        // console.log(e.target, e.clientX, e.clientY);
+        ballElem.style.transform =
+          "translate(" + (e.clientX - 15) + "px, " + (e.clientY - 15) + "px)";
+      });
+
+      ballElem.addEventListener("transitionend", function (e) {
+        ballElem.classList.add("end");
+        console.log(e.elapsedTime); //transition-duration: 2s;
+        console.log(e.propertyName);
+      });
+    </script>
+  </body>
+</html>

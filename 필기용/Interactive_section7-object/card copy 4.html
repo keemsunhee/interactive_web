@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Object-card 만들어보기</title>
+    <style>
+      .card {
+        /* width: 120px;
+        height: 160px; */
+        border: 5px solid #000;
+        border-radius: 15px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function Card(number, color, width, height) {
+        this.number = number;
+        this.color = color;
+        this.width = width;
+        this.height = height;
+        this.init();
+      }
+
+      // Card.prototype.width = 120;
+      // Card.prototype.height = 160;
+
+      Card.prototype = {
+        // prototype이라는 객체를 새로 생성한 것이기 때문에 constructor: Card, 들어가야한다
+        constructor: Card,
+        init: function () {
+          const cardBox = document.createElement("div");
+          cardBox.style.color = this.color;
+          cardBox.innerHTML = this.number;
+          cardBox.style.width = this.width;
+          cardBox.style.height = this.height;
+
+          cardBox.classList.add("card");
+          document.body.appendChild(cardBox);
+          console.log(document);
+        },
+      };
+
+      const card1 = new Card(1, "#f89", "100px", "200px");
+      const card2 = new Card(3, "#f80", "200px", "200px");
+    </script>
+  </body>
+</html>

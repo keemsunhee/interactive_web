@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>classList, className</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      .characters {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: #fff000;
+      }
+      .ilbuni {
+        width: 100px;
+        cursor: pointer;
+      }
+      .characters .ilbuni {
+        display: inline-block;
+      }
+      .special {
+        border: 10px dashed red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="characters">
+      <div class="ilbuni a">
+        <img src="images/ilbuni_0.png" alt="일분이" />
+      </div>
+      <div class="ilbuni b">
+        <img src="images/ilbuni_1.png" alt="일분이" />
+      </div>
+      <div class="ilbuni c">
+        <img src="images/ilbuni_2.png" alt="일분이" />
+      </div>
+    </div>
+    <div class="ilbuni d">
+      <img src="images/ilbuni_3.png" alt="일분이" />
+    </div>
+
+    <script>
+      const ilbuniGroup = document.querySelectorAll(".ilbuni");
+      console.log(ilbuniGroup[2]);
+
+      //data- 로 시작하는 표준 커스텀 속성
+      //data-index, data-id, data-role 등 data- 형식으로 시작하면 어떤 속성이든 필요에 따라 임의로 추가할 수 있다
+      const char = document.querySelector(".characters");
+      console.log(char);
+
+      char.setAttribute("data-id", 123);
+      console.log(char);
+
+      char.getAttribute("data-id");
+      console.log(char.getAttribute("data-id"));
+
+      //document.createElement
+      //innerHTML
+      //appendChild
+      //removeChild
+
+      const pElem = document.createElement("p");
+      // console.log(pElem);
+
+      pElem.innerHTML = '<a href="#">안녕???</a>';
+      console.log(pElem);
+
+      char.appendChild(pElem);
+      console.log(pElem);
+      char.removeChild(document.querySelector(".b")); //removeChild(Node형식으로 작성해야함)
+      console.log(pElem);
+      //classList.add (classname이 추가됨)
+      //classList.remove (classname이 삭제됨)
+      //classList.toggle (classname이 있으면 삭제, 없으면 추가됨)
+
+      const ilbuni1 = document.querySelector(".ilbuni");
+      ilbuni1.classList.add("special");
+      ilbuni1.classList.remove("special");
+
+      ilbuni1.classList.toggle("special");
+      ilbuni1.classList.toggle("special");
+      //className (classname이 교체됨)
+      const ilbuni2 = document.querySelector(".ilbuni:nth-child(2)");
+      ilbuni2.className = "special";
+    </script>
+  </body>
+</html>

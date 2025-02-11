@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CSS pointer-events: none;</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      .menu {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        width: 100vw;
+      }
+
+      .menu-btn {
+        margin-right: 10px;
+        border: 2px solid #999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <button class="menu-btn a">
+        <img src="images/ilbuni_0.png" />
+        <span>일분이1</span>
+      </button>
+      <button class="menu-btn b">
+        <img src="images/ilbuni_1.png" />
+        <span>일분이2</span>
+      </button>
+      <button class="menu-btn c">
+        <img src="images/ilbuni_2.png" />
+        <span>일분이3</span>
+      </button>
+    </div>
+
+    <script>
+      (function () {
+        const btns = document.querySelectorAll(".menu-btn");
+
+        function clickBtnHandler(e) {
+          console.log(e.target);
+        }
+
+        for (let i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", clickBtnHandler);
+        }
+
+        // function clickBtnHandler(e) {
+        //   console.log(e.target);
+        // }
+
+        // btns[0].addEventListener("click", clickBtnHandler);
+        // btns[1].addEventListener("click", clickBtnHandler);
+        // btns[2].addEventListener("click", clickBtnHandler);
+      })();
+    </script>
+  </body>
+</html>

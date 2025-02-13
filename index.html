@@ -7,91 +7,57 @@
     <title>Interactive Web</title>
     <link rel="stylesheet" href="css/reset.css" />
     <style>
-      .box-container {
-        display: flex;
-      }
-      .box {
-        width: 100px;
-        height: 100px;
-        background: rgba(255, 255, 0, 0.7);
-        border: 1px solid #000;
-        transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-      }
-      .box:hover {
-        width: 200px;
-        /* height: 200px; */
-        /* transform: scale(2); */
-        /* transform: skewY(-30deg); */
-        /* transform: translate(30px, 10px); */
-        /* transform: translateY(-30px); */
-        /* transform: scale(2); */
-        /* transform-origin: right bottom; */
-        /* transform: rotate(30deg); */
-      }
-      @keyframes sample-ani {
-        0% {
-          transform: translate(0, 0);
-        }
-        50% {
-          background-color: #f80;
-          transform: translate(100px, 0);
-        }
-        100% {
-          transform: translate(300px, 50px);
-        }
-      }
-      .box2 {
+      .world {
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 80vw;
+        height: 80vh;
+        background-color: #ff0;
+        perspective: 500px;
+      }
+      .card {
+        position: relative;
         width: 100px;
-        height: 100px;
-        border: 2px solid #000;
-        background-color: #f89;
-        animation: sample-ani 2s linear infinite alternate;
-      }
-
-      @keyframes spaceShip-ani {
-        to {
-          background-position: -2550px 0;
-        }
-        form {
-        }
-      }
-      .spaceShip {
-        width: 150px;
         height: 150px;
-        background: url(./images/sprite_spaceship.png) no-repeat 0 0 / auto
-          150px;
-        animation: spaceShip-ani 2s infinite steps(17);
+        margin: 1em;
+        transform: rotateY(0deg);
+        transform-style: preserve-3d;
+        /* 디폴트 해놔야 리셋 할때 좋음: 이론적으로 */
+        transition: 1s;
+      }
+      .world:hover .card {
+        transform: rotateY(180deg);
+      }
+      .card-side {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0.5em;
+        font-size: 1.5rem;
+        backface-visibility: hidden;
+      }
+      .card-side-front {
+        z-index: 1;
+        background-color: #f80;
+      }
+      .card-side-back {
+        background-color: #fff;
+        transform: rotateY(180deg);
       }
     </style>
   </head>
   <body>
-    <h1>CSS Transform,Transition</h1>
-    <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining essentially
-      unchanged. It was popularised in the 1960s with the release of Letraset
-      sheets containing Lorem Ipsum passages, and more recently with desktop
-      publishing software like Aldus PageMaker including versions of Lorem
-      Ipsum.
-    </p>
-    <div class="box-container">
-      <div class="box">a</div>
-      <div class="box">b</div>
-      <div class="box">c</div>
-      <div class="box">d</div>
-      <div class="box">e</div>
+    <div class="world">
+      <div class="card">
+        <div class="card-side card-side-front">F</div>
+        <div class="card-side card-side-back">B</div>
+      </div>
     </div>
-
-    <h1>Animation</h1>
-    <div class="box2">BOX</div>
-
-    <h1>frame by frame</h1>
-    <div class="spaceShip"></div>
   </body>
 </html>
